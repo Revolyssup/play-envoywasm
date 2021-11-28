@@ -37,14 +37,6 @@ static_resources:
                    - name: direct_response
                      domains: ["*"]
                      routes:
-                      - match:
-                          prefix: "/blue"
-                        route: 
-                          cluster: blue
-                      - match:
-                          prefix: "/green"
-                        route:
-                          cluster: green
                       - match: 
                           prefix: "/"
                         direct_response: 
@@ -54,27 +46,5 @@ static_resources:
 
 
 
-    clusters:
-      - name: blue
-        connect_timeout: 5s
-        load_assignment:
-          cluster_name: blue
-          endpoints:
-            - lb_endpoints:
-               - endpoint:
-                   address:
-                    socket_address:
-                      address: 127.0.0.1
-                      port_value: 5050
-      - name: green
-        connect_timeout: 5s
-        load_assignment:
-          cluster_name: green
-          endpoints:
-            - lb_endpoints:
-               - endpoint:
-                   address:
-                    socket_address:
-                      address: 127.0.0.1
-                      port_value: 5000
+
 
